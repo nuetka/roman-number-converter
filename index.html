@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Преобразование в римские цифры</title>
+</head>
+<body>
+    <p>Введите целое число в десятичной с.с.:</p>
+    <p><input type="text" id="A"></p>
+    <p>Римская с.с.:</p>
+    <p><input type="text" id="B"></p>
+    <p><input type="button" value="Преобразовать" id="button" /></p>
+    
+    <script>
+        const normalNumbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+const romanNumbers = [
+  "M",
+  "CM",
+  "D",
+  "CD",
+  "C",
+  "XC",
+  "L",
+  "XL",
+  "X",
+  "IX",
+  "V",
+  "IV",
+  "I"
+];
+
+document.getElementById("button").onclick = () => {
+  conversion(document.getElementById("A").value);
+};
+
+function conversion(a) {
+  let result = "";
+  normalNumbers.map((item, index) => {
+    while (item <= a) {
+      result += romanNumbers[index];
+      a = a - item;
+    }
+  });
+  document.getElementById("B").value = result;
+}
+
+       
+    </script>
+
+
+</body>
+</html>
